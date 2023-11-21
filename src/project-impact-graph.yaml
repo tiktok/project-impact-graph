@@ -1,0 +1,117 @@
+globalExcludedGlobs:
+    - OWNERS
+    - build.sh
+    - bootstrap.sh
+    - common/autoinstallers/**
+projects:
+    A:
+        includedGlobs:
+            - projects/folder_A/**
+        excludedGlobs:
+            - projects/folder_A/README.md
+        dependentProjects:
+            - A
+            - E
+            - G
+    B:
+        includedGlobs:
+            - projects/folder_B/**
+        excludedGlobs:
+            - projects/folder_B/README.md
+        dependentProjects:
+            - B
+            - H
+    B_subProject:
+        includedGlobs:
+            - projects/folder_B/sub_module/**
+        excludedGlobs:
+            - projects/folder_B/sub_module/README.md
+        dependentProjects:
+            - B_subProject
+            - B
+            - H
+    C:
+        includedGlobs:
+            - projects/folder_C/**
+        excludedGlobs:
+            - projects/folder_C/README.md
+        dependentProjects:
+            - C
+            - L
+    D:
+        includedGlobs:
+            - projects/folder_D/**
+        excludedGlobs:
+            - projects/folder_D/README.md
+        dependentProjects:
+            - D
+            - L
+    E:
+        includedGlobs:
+            - projects/folder_E/**
+        excludedGlobs:
+            - projects/folder_E/README.md
+        dependentProjects:
+            - E
+    F:
+        includedGlobs:
+            - projects/folder_F/**
+        excludedGlobs:
+            - projects/folder_F/README.md
+        dependentProjects:
+            - F
+            - M
+    G:
+        includedGlobs:
+            - projects/folder_G/**
+        excludedGlobs:
+            - projects/folder_G/README.md
+        dependentProjects:
+            - G
+            - F
+    H:
+        includedGlobs:
+            - projects/folder_H/**
+        excludedGlobs:
+            - projects/folder_H/README.md
+        dependentProjects:
+            - H
+            - F
+    I:
+        includedGlobs:
+            - projects/folder_I/**
+        excludedGlobs:
+            - projects/folder_I/README.md
+        dependentProjects:
+            - I
+    J:
+        includedGlobs:
+            - projects/folder_J/**
+        excludedGlobs:
+            - projects/folder_J/README.md
+        dependentProjects:
+            - J
+            - M
+    K:
+        includedGlobs:
+            - projects/folder_K/**
+        excludedGlobs:
+            - projects/folder_K/README.md
+        dependentProjects:
+            - K
+    L:
+        includedGlobs:
+            - projects/folder_L/**
+        excludedGlobs:
+            - projects/folder_L/README.md
+        dependentProjects:
+            - L
+            - J
+            - K
+    M:
+        includedGlobs:
+            - projects/folder_M/**
+        excludedGlobs:
+            - projects/folder_M/README.md
+        dependentProjects:
+            - M
