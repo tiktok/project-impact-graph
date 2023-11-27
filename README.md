@@ -173,7 +173,7 @@ Users may have modified dependencies in MR, and project-impact-graph.yaml has ch
 Assume that Monorepo has projects **A, B, B_subProject, C,..., M**. Their dependency relations are as follows:
 
 <p align="center">
-  <img src="./images/demo.jpg" alt="demo graph" width="600">
+  <img src="./images/demo.png" alt="demo graph" width="600">
 </p>
 
 There are some cases defined in the `src/test/index.test.ts` file. After cloning the repository, you can execute the following command to get a deeper understanding
