@@ -121,7 +121,7 @@ The steps to generate the yaml file are as follows:
 ## How to use the project-impact-graph.yaml file
 
 <p align="center">
-  <img src="./images/howToUse.jpg">
+  <img src="./images/howToUse.png">
 </p>
 
 When an MR is submitted to the Merge Queue, the Merge Queue will perform the following steps:
