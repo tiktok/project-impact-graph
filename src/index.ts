@@ -4,7 +4,6 @@
 import fs from 'fs';
 import yaml from 'yaml';
 import _ from 'lodash';
-import { minimatch } from 'minimatch';
 
 /**
  * Project property configuration
@@ -69,7 +68,7 @@ export class ProjectImpactGraph {
         const validPaths = pathList.filter((path) => {
             let notMatched = true;
             globs.forEach((glob) => {
-                if (minimatch(path, glob)) {
+                if (path.startsWith(glob)) {
                     notMatched = false;
                 }
             });
@@ -104,7 +103,7 @@ export class ProjectImpactGraph {
             for (const projectName in projects) {
                 const { includedGlobs } = projects[projectName];
                 includedGlobs.forEach((glob) => {
-                    if (minimatch(path, glob)) {
+                    if (path.startsWith(glob)) {
                         matchedProjects.push({ projectName, depth: glob.split('/').length });
                     }
                 });

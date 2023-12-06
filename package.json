@@ -25,7 +25,6 @@
     },
     "dependencies": {
         "lodash": "^4.17.21",
-        "minimatch": "^9.0.3",
         "yaml": "^2.3.4"
     }
 }
