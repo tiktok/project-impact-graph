@@ -6,7 +6,8 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "test": "jest",
-        "build": "tsc"
+        "build": "tsc",
+        "test:performance": "ts-node src/performance/index.ts"
     },
     "repository": {
         "type": "git",
