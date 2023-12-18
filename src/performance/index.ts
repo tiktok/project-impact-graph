@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import yaml from 'yaml';
-import { IFileSchema, ProjectImpactGraph } from '../index';
+import { IFileSchema, ProjectImpactGraph, stats } from '../index';
 
 /**
  * Each node represents a project
@@ -132,6 +132,8 @@ const json2md = (data: object[]) => {
  */
 const performance = () => {
     const testConfigs = [
+        { nodeCount: 2000, edgeCount: 10000, pathCountA: 1000, pathCountB: 1000 }
+        /*
         { nodeCount: 1000, edgeCount: 5000, pathCountA: 1, pathCountB: 1 },
         { nodeCount: 1000, edgeCount: 5000, pathCountA: 10, pathCountB: 10 },
         { nodeCount: 1000, edgeCount: 5000, pathCountA: 100, pathCountB: 100 },
@@ -144,6 +146,7 @@ const performance = () => {
         { nodeCount: 3000, edgeCount: 100000, pathCountA: 10, pathCountB: 10 },
         { nodeCount: 3000, edgeCount: 100000, pathCountA: 100, pathCountB: 100 },
         { nodeCount: 3000, edgeCount: 100000, pathCountA: 1000, pathCountB: 1000 }
+        */
     ];
     const performanceReport: object[] = [];
     testConfigs.forEach((config) => {
@@ -169,3 +172,4 @@ const performance = () => {
 // run `ts-node src/performance/index.ts` to execute performance test
 const report = performance();
 console.log(report);
+console.log(stats);
