@@ -24,6 +24,21 @@ export interface IFileSchema {
     };
 }
 
+export let stats = {
+    _integrateExcludedGlobs: 0,
+    _integrateExcludedGlobs2: 0,
+    _validatePaths: 0,
+    _validatePaths2: 0,
+    lookUpProjectNamesByPathList: 0,
+    lookUpProjectNamesByPathList2: 0,
+    lookUpProjectNamesByPathList3: 0,
+    lookUpProjectNamesByPathList4: 0,
+    getProjectImpactByProjectNames: 0,
+    getProjectImpactByProjectNames2: 0,
+    getProjectImpactByProjectNames3: 0,
+    hasImpactIntersection: 0
+};
+
 /**
  * Stores the complete project-impact-graph and provide relevant functions
  * Constructs instance based on the path of `project-impact-graph.yaml`
@@ -51,9 +66,12 @@ export class ProjectImpactGraph {
      * Integrates and returns an array of excludedGlobs from all projects
      */
     private _integrateExcludedGlobs(): string[] {
+        ++stats._integrateExcludedGlobs;
+
         const { projects } = this._projectImpactGraph;
         const projectExcludedGlobs: string[] = [];
         for (const project in projects) {
+            ++stats._integrateExcludedGlobs2;
             projectExcludedGlobs.push(...projects[project].excludedGlobs);
         }
         return _.uniq(projectExcludedGlobs);
@@ -64,10 +82,12 @@ export class ProjectImpactGraph {
      * @param pathList - An array of paths changed
      */
     private _validatePaths(pathList: string[]): string[] {
+        ++stats._validatePaths;
         const globs = this._globalExcludedGlobs.concat(this._projectExcludedGlobs);
         const validPaths = pathList.filter((path) => {
             let notMatched = true;
             globs.forEach((glob) => {
+                ++stats._validatePaths2;
                 if (path.startsWith(glob)) {
                     notMatched = false;
                 }
@@ -91,6 +111,7 @@ export class ProjectImpactGraph {
      * @param pathList - An array of paths changed
      */
     public lookUpProjectNamesByPathList(pathList: string[]): [string[], string[]] {
+        ++stats.lookUpProjectNamesByPathList;
         if (!pathList || pathList.length === 0) {
             return [[], []];
         }
@@ -101,9 +122,12 @@ export class ProjectImpactGraph {
         validPaths.forEach((path) => {
             const matchedProjects: { projectName: string; depth: number }[] = [];
             for (const projectName in projects) {
+                ++stats.lookUpProjectNamesByPathList2;
                 const { includedGlobs } = projects[projectName];
                 includedGlobs.forEach((glob) => {
+                    ++stats.lookUpProjectNamesByPathList3;
                     if (path.startsWith(glob)) {
+                        ++stats.lookUpProjectNamesByPathList4;
                         matchedProjects.push({ projectName, depth: glob.split('/').length });
                     }
                 });
@@ -125,6 +149,7 @@ export class ProjectImpactGraph {
      * @param projectNames - An array of project names
      */
     public getProjectImpactByProjectNames(projectNames: string[]): string[] {
+        ++stats.getProjectImpactByProjectNames;
         if (!projectNames || projectNames.length === 0) {
             return [];
         }
@@ -132,9 +157,11 @@ export class ProjectImpactGraph {
         const queue: string[] = [...projectNames];
         const { projects } = _.cloneDeep(this._projectImpactGraph);
         while (queue.length !== 0) {
+            ++stats.getProjectImpactByProjectNames2;
             const currentProject = queue.shift();
             const dependents = projects[currentProject as string].dependentProjects;
             dependents.forEach((item) => {
+                ++stats.getProjectImpactByProjectNames3;
                 if (!impact.includes(item)) {
                     impact.push(item);
                     queue.push(item);
@@ -151,6 +178,7 @@ export class ProjectImpactGraph {
      * @param pathList2 - An array of paths changed
      */
     public hasImpactIntersection(pathList1: string[], pathList2: string[]): boolean {
+        ++stats.hasImpactIntersection;
         const [projectNames1, unMatchedPaths1] = this.lookUpProjectNamesByPathList(pathList1);
         const [projectNames2, unMatchedPaths2] = this.lookUpProjectNamesByPathList(pathList2);
         if (unMatchedPaths1.length > 0 || unMatchedPaths2.length > 0) {
