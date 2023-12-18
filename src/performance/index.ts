@@ -106,6 +106,28 @@ const generatePaths = (pathNumber: number) => {
 };
 
 /**
+ * Returns a markdown table
+ *
+ * @param data - json data
+ */
+const json2md = (data: object[]) => {
+    const headers = Object.keys(data[0]);
+    let mdTable = headers.join(' | ') + '\n';
+
+    // Add Markdown table separators
+    mdTable += headers.map(() => '---').join(' | ') + '\n';
+
+    // Add data row
+    data.forEach((obj) => {
+        const row = Object.values(obj)
+            .map((value) => (typeof value === 'string' ? value : JSON.stringify(value)))
+            .join(' | ');
+        mdTable += row + '\n';
+    });
+    return mdTable;
+};
+
+/**
  * Test performance and generate report file
  */
 const performance = () => {
@@ -139,7 +161,8 @@ const performance = () => {
             executeTime: `${executeTime}s`
         });
     });
-    fs.writeFileSync(path.resolve(__dirname, './performance-report'), JSON.stringify(performanceReport, null, 2));
+
+    fs.writeFileSync(path.resolve(__dirname, './performance-report.md'), json2md(performanceReport));
     return performanceReport;
 };
 

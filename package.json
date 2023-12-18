@@ -1,6 +1,6 @@
 {
     "name": "project-impact-graph",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "Proposed a project impact graph file format that can be used for Merge Queue and CI",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -19,6 +19,7 @@
     "devDependencies": {
         "@types/jest": "^29.5.8",
         "@types/lodash": "^4.14.201",
+        "@types/micromatch": "^4.0.6",
         "@types/node": "^20.9.0",
         "jest": "^29.7.0",
         "ts-jest": "^29.1.1",
@@ -26,6 +27,8 @@
     },
     "dependencies": {
         "lodash": "^4.17.21",
+        "micromatch": "^4.0.5",
+        "minimatch": "^9.0.3",
         "yaml": "^2.3.4"
     }
 }
