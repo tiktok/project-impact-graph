@@ -2,11 +2,11 @@ globalExcludedGlobs:
     - OWNERS
     - build.sh
     - bootstrap.sh
-    - common/autoinstallers/**
+    - common/autoinstallers/
 projects:
     A:
         includedGlobs:
-            - projects/folder_A/**
+            - projects/folder_A/
         excludedGlobs:
             - projects/folder_A/README.md
         dependentProjects:
@@ -15,7 +15,7 @@ projects:
             - G
     B:
         includedGlobs:
-            - projects/folder_B/**
+            - projects/folder_B/
         excludedGlobs:
             - projects/folder_B/README.md
         dependentProjects:
@@ -23,7 +23,7 @@ projects:
             - H
     B_subProject:
         includedGlobs:
-            - projects/folder_B/sub_module/**
+            - projects/folder_B/sub_module/
         excludedGlobs:
             - projects/folder_B/sub_module/README.md
         dependentProjects:
@@ -32,7 +32,7 @@ projects:
             - H
     C:
         includedGlobs:
-            - projects/folder_C/**
+            - projects/folder_C/
         excludedGlobs:
             - projects/folder_C/README.md
         dependentProjects:
@@ -40,7 +40,7 @@ projects:
             - L
     D:
         includedGlobs:
-            - projects/folder_D/**
+            - projects/folder_D/
         excludedGlobs:
             - projects/folder_D/README.md
         dependentProjects:
@@ -48,14 +48,14 @@ projects:
             - L
     E:
         includedGlobs:
-            - projects/folder_E/**
+            - projects/folder_E/
         excludedGlobs:
             - projects/folder_E/README.md
         dependentProjects:
             - E
     F:
         includedGlobs:
-            - projects/folder_F/**
+            - projects/folder_F/
         excludedGlobs:
             - projects/folder_F/README.md
         dependentProjects:
@@ -63,7 +63,7 @@ projects:
             - M
     G:
         includedGlobs:
-            - projects/folder_G/**
+            - projects/folder_G/
         excludedGlobs:
             - projects/folder_G/README.md
         dependentProjects:
@@ -71,7 +71,7 @@ projects:
             - F
     H:
         includedGlobs:
-            - projects/folder_H/**
+            - projects/folder_H/
         excludedGlobs:
             - projects/folder_H/README.md
         dependentProjects:
@@ -79,14 +79,14 @@ projects:
             - F
     I:
         includedGlobs:
-            - projects/folder_I/**
+            - projects/folder_I/
         excludedGlobs:
             - projects/folder_I/README.md
         dependentProjects:
             - I
     J:
         includedGlobs:
-            - projects/folder_J/**
+            - projects/folder_J/
         excludedGlobs:
             - projects/folder_J/README.md
         dependentProjects:
@@ -94,14 +94,14 @@ projects:
             - M
     K:
         includedGlobs:
-            - projects/folder_K/**
+            - projects/folder_K/
         excludedGlobs:
             - projects/folder_K/README.md
         dependentProjects:
             - K
     L:
         includedGlobs:
-            - projects/folder_L/**
+            - projects/folder_L/
         excludedGlobs:
             - projects/folder_L/README.md
         dependentProjects:
@@ -110,7 +110,7 @@ projects:
             - K
     M:
         includedGlobs:
-            - projects/folder_M/**
+            - projects/folder_M/
         excludedGlobs:
             - projects/folder_M/README.md
         dependentProjects:

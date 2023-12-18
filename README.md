@@ -182,3 +182,34 @@ There are some cases defined in the `src/test/index.test.ts` file. After cloning
 pnpm install
 pnpm test
 ```
+
+## Performance Test
+
+We simulate creating a Monorepo and generate a dependency DAG for it. Assume that each project is a node and the dependency relation between any two projects is a directed edge. We also provide a generateDAG function that supports customizing the number of generated nodes and edges for a DAG. You can modify the `testConfig` in `src/performance/index.ts` to customize your own test complexity, then execute the following command to start performance testing
+
+```
+pnpm install
+pnpm test:performance
+```
+
+### Performance report：
+
+-   Testing environment:
+    -   8 \* [Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz]
+    -   MemTotal: 40GB
+    -   Node, Typescript
+
+| nodeCount | edgeCount | pathCountA | pathCountB | executeTime |
+| --------- | --------- | ---------- | ---------- | ----------- |
+| 1000      | 5000      | 1          | 1          | 0.489s      |
+| 1000      | 5000      | 10         | 10         | 0.425s      |
+| 1000      | 5000      | 100        | 100        | 0.448s      |
+| 1000      | 5000      | 1000       | 1000       | 0.845s      |
+| 2000      | 10000     | 1          | 1          | 0.913s      |
+| 2000      | 10000     | 10         | 10         | 0.936s      |
+| 2000      | 10000     | 100        | 100        | 1.072s      |
+| 2000      | 10000     | 1000       | 1000       | 1.776s      |
+| 3000      | 100000    | 1          | 1          | 9.46s       |
+| 3000      | 100000    | 10         | 10         | 10.533s     |
+| 3000      | 100000    | 100        | 100        | 11.029s     |
+| 3000      | 100000    | 1000       | 1000       | 11.984s     |
